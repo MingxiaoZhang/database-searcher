@@ -1,0 +1,5 @@
+TOKEN='token'
+USER='root'
+PASSWORD='password'
+DB='db'
+TABLE='table'

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <title>Search Database</title>
+    <meta http-Equiv="Cache-Control" Content="no-cache" />
+    <meta http-Equiv="Pragma" Content="no-cache" />
+    <meta http-Equiv="Expires" Content="0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('.static', filename='/style/style.css')}}">
+</head>
+<body onload="refresh">
+    <!-- (A) SEARCH FORM -->
+    {% block form %}
+    <form class="form-group-inline" method="post">
+        <input type="text" class="form-control-inline" name="search" required/>
+        <input type="submit" class="btn btn-primary" value="Search"/>
+    </form>
+    {% endblock %}
+    <!-- (B) OUTPUT SEARCH RESULTS -->
+    {% if files | length != 0 %}
+    <table id="demo">
+        {% for u in files %}
+        <tr>
+        <td><a href={{ url_for('display' ,id=u[0]) }}>{{ u[1] }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    {% if firstpage == False %}
+    <div id="demo">No search results.</div>
+    {% endif %}
+    {% endif %}
+
+    {% if result %}
+    <div>
+        <h4>{{ filename }}</h4>
+        <iframe src="{{ url_for('test') }}" id="table" title="Data Table">IFrame not supported</iframe>
+    </div>
+    {% endif %}
+    </body>
