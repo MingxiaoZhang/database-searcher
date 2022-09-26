@@ -1,37 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <!-- (A) SEARCH FORM -->
-  {% block form %}
-  <form class="form-group-inline" method="post">
-      <input type="text" class="form-control-inline" name="search" required/>
-      <input type="submit" class="btn btn-primary" value="Search"/>
-  </form>
-  {% endblock %}
-  <!-- (B) OUTPUT SEARCH RESULTS -->
+  <!-- OUTPUT SEARCH RESULTS -->
   {% if files | length != 0 %}
   <table id="data" class="table table-striped">
     <thead>
         <tr>
           <th>Name</th>
-          <th>Size</th>
+          <th>Size(KB)</th>
           <th>Date Created</th>
         </tr>
     </thead>
     <tbody>
         {% for u in files %}
         <tr>
-          <td><a href={{ url_for('display' ,id=u[0]) }}>{{ u[1] }}</a></td>
-          <td>{{ u[3] }}</td>
+          <td><a href={{ url_for('display' ,id=u[0]) }} target="_blank">{{ u[1] }}</a></td>
+          <td>{{ (u[3] // 1024 + 1) }}</td>
           <td>{{ u[4] }}</td>
         </tr>
         {% endfor %}
     </tbody>
   </table>
   {% else %}
-  {% if firstpage == False %}
-  <div id="message">No search results.</div>
-  {% endif %}
+  <div id="message">Database empty</div>
   {% endif %}
 
   {% if result %}

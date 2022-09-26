@@ -1,5 +1,5 @@
-TOKEN='token'
+TOKEN='d9464d8e2781c8c0cbdb42f886b577ee06e7b5e1'
 USER='root'
-PASSWORD='password'
-DB='websearcher'
+PASSWORD='ZMx-02524'
+DB='test'
 TABLE='table'

@@ -5,13 +5,23 @@
     <meta http-Equiv="Pragma" Content="no-cache" />
     <meta http-Equiv="Expires" Content="0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{url_for('.static', filename='/style/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
 </head>
 <body>
     <div class="container">
+      <h1>Database Searcher</h1>
       <hr>
       {% block content %}{% endblock %}
     </div>
-    {% block scripts %}{% endblock %}
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+    {% block scripts %}
+      <script>
+        $(document).ready(function () {
+          $('#data').DataTable();
+        });
+      </script>
+    {% endblock %}
   </body>
 </html>

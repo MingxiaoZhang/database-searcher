@@ -11,22 +11,10 @@ Bootstrap(app)
 
 @app.route("/",methods =['POST','GET'])
 def main():
-    if request.method == "POST":
-        content=dict(request.form)
-        return search(content)
-    return render_template("index.html", firstpage=True)
-
-@app.route("/search",methods =['POST','GET'])
-def search():
+    # Connect to db
     db = Dbconnect()
-    firstpage=True
-    if request.method == "POST":
-        firstpage=0
-        data = dict(request.form)
-        files = db.getfile_by_name('filename', data["search"])
-    else:
-        files = []
-    return render_template("index.html",files=files, firstpage=firstpage)
+    files = db.getfiles('filename')
+    return render_template("index.html",files=files)
 
 @app.route('/test.html')
 def test():
@@ -35,20 +23,20 @@ def test():
 @app.route("/display_data/<int:id>",methods =['POST','GET'])
 def display(id):
     db = Dbconnect()
-    if request.method == "POST":
-        data = dict(request.form)
-        files = db.getfile_by_name('filename', data["search"])
-        return render_template("index.html",files=files, firstpage=False, result=False)
-    else:
-        data=db.getfile_by_id('id', str(id))
-        file=data[0][2]
-        filedata=db.getdata(file)
-        r = dp.Report(
-            dp.DataTable(filedata), 
-            )
-        r.save(path="templates/test.html")
-        dp.login(token=const.TOKEN)
-        return render_template("index.html",files=[], filename=data[0][1], result=True)
+    # Find row by url id
+    data=db.getfile_by_id('id', str(id))
+    # Get file data in third column
+    file=data[0][2]
+    # Decode binary data into dataframe
+    filedata=db.getdata(file)
+    # Generate datapane report
+    r = dp.Report(
+        dp.DataTable(filedata), 
+        )
+    # Create temporary page for viewing
+    r.save(path="templates/test.html")
+    dp.login(token=const.TOKEN)
+    return render_template("view.html")
 
 if __name__ == '__main__':
 	app.run(debug = False)
