@@ -1,5 +1,5 @@
 TOKEN='token'
 USER='root'
 PASSWORD='password'
-DB='db'
+DB='websearcher'
 TABLE='table'
