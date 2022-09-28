@@ -3,8 +3,6 @@ from flask import Flask, render_template, request, url_for, redirect, send_file
 from flask_bootstrap import Bootstrap
 import const
 from dbconnect import Dbconnect
-import altair as alt
-import datapane as dp
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -16,9 +14,9 @@ def main():
     files = db.getfiles('filename')
     return render_template("index.html",files=files)
 
-@app.route('/test.html')
+@app.route('/view.html')
 def test():
-    return send_file('templates/test.html')
+    return send_file('templates/view.html')
 
 @app.route("/display_data/<int:id>",methods =['POST','GET'])
 def display(id):
@@ -30,12 +28,13 @@ def display(id):
     # Decode binary data into dataframe
     filedata=db.getdata(file)
     # Generate datapane report
-    r = dp.Report(
-        dp.DataTable(filedata), 
-        )
-    # Create temporary page for viewing
-    r.save(path="templates/test.html")
-    dp.login(token=const.TOKEN)
+    #render dataframe as html
+    html = filedata.to_html(table_id="data", classes="table table-striped")
+
+    #write html to file
+    text_file = open("templates/view.html", "w", encoding="utf-8")
+    text_file.write('{% extends "base.html" %} \n {% block content %} \n' + html + '\n{% endblock %}')
+    
     return render_template("view.html")
 
 if __name__ == '__main__':

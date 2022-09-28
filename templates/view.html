@@ -1,22 +1,793 @@
-{% extends "base.html" %}
-
-{% block content %}
-<style>
-    body,html{ height: 100% }
-
-    iframe{
-        width: 100%;
-        height: 100%;
-    }
-    
-    div{
-    width: 100%;
-    height: 100%;
-    padding:30px;
-  }
-</style>
-<div>
-    <h4>{{ filename }}</h4>
-    <iframe src="{{ url_for('test') }}" id="table" title="Data Table">IFrame not supported</iframe>
-</div>
+{% extends "base.html" %} 
+ {% block content %} 
+<table border="1" class="dataframe table table-striped" id="data">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>Unnamed: 2</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>杂志</td>
+      <td>International Journal of cancer</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>网址</td>
+      <td>http://mc.manuscriptcentral.com/ijc-wiley</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>账号</td>
+      <td>lishamou@gmail.com</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>密码</td>
+      <td>Mou123456！</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>点击Author</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>点击 Start New Submission</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NaN</td>
+      <td>点击 Begin Submission</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Step 1: Type, Title, &amp; Abstract</td>
+      <td>* Type:</td>
+      <td>Research Article</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>* Title</td>
+      <td>Development and Validation of an Angiogenesis-Related Gene Signature in Hepatocellular Carcinoma</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>NaN</td>
+      <td>* Abstract</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>NaN</td>
+      <td>Write or Paste Abstract</td>
+      <td>Approximately 70–85 % of primary liver cancers are hepatocellular carcinoma (HCC). By using single-cell RNA sequencing (scRNA-seq), tumor cells can be characterized at single-cell resolution. Angiogenesis plays a significant role in tumor formation. There is an urgent need for an angiogenesis-related gene prediction signature to evaluate the prognosis of HCC patients. In this study, 179 angiogenesis-related genes (AngRG) were differentially expressed between primary and metastatic HCC. Transcriptome and clinical data were further gathered on HCC from TCGA and ICGC. A ten AngRG signature and risk score model was constructed to predict the outcome of HCC. A competing-risk nomogram was created using the cancer status, which was accurate and predictive. We also compared two risk score groups for somatic tumor mutational burden (TMB). The results showed that AngRG high-risk scores were linked to the TP53 mutation. According to the xCell analysis, the risk profile predicted immune cell infiltration in HCC. Additionally, enrichment of N-glycan biosynthesis, ubiquitin-mediated proteolysis, RNA degradation, the mTOR, and the cell cycle signaling pathways was identified in the AngRG high-risk group of HCC. Overall, scRNA-seq and bulk RNA-seq were used to develop a 10-gene signature (including CYP27A1, S100A10, S100A9, SQSTM1, FGB, CLDN6, CNN3, HMGCS2, CYP3A5, and RGCC) to predict the overall survival of HCC patients.</td>
+      <td>250字以内</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>NaN</td>
+      <td>Novelty &amp; Impact Statements</td>
+      <td>Angiogenesis plays a significant role in hepatocellular carcinoma formation. For the first time, we use scRNA-seq and bulk RNA-seq data to develop a 10-gene signature to predict the overall survival of HCC patients. We also compared two risk score groups for somatic tumor mutational burden (TMB), immune microenvironment and enrichment of signaling pathways.</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>NaN</td>
+      <td>Category</td>
+      <td>Tumor markers and signatures</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>NaN</td>
+      <td>Coalition S Funding</td>
+      <td>点击确认V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>NaN</td>
+      <td>Save &amp; Continue</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Step 2: File Upload</td>
+      <td>File Upload</td>
+      <td>NaN</td>
+      <td>上传这部分内容最花时间，重点实现这部分的功能</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NaN</td>
+      <td>SELECTION</td>
+      <td>Select File 1</td>
+      <td>上传文件</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NaN</td>
+      <td>FILE DESIGNATION</td>
+      <td>Choose File Designation</td>
+      <td>选择文件类型：我们只需要上传这四种文件Main document ，Image，Table，Supplementary Material for Review</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NaN</td>
+      <td>Main document</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>NaN</td>
+      <td>Image</td>
+      <td>Figure 1. Single-cell RNA sequencing profiling from hepatocellular carcinoma (HCC) cell samples and identification of angiogenesis-related genes (AngRG). (A) Cell populations clustered by the t-SNE algorithm. (B) Venn diagram of overlapping AngRG changes. (C) A volcano plot for differentially expressed AngRG. (D) Heatmap of the top 50 differentially expressed genes between primary and metastasic HCC. Group 1: primary HCC samples, Group 2: metastatic HCC samples.</td>
+      <td>逐个上传figure，并在Caption / Legend: 填写对应figure的描述</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>NaN</td>
+      <td>Image</td>
+      <td>Figure 2. Construction of a prognostic AngRG signature in the TCGA-LIHC cohort. (A, B) The LASSO method was performed on prognostic AngRG using univariate Cox regression analysis. (C) AngRG screened by multivariate Cox regression analysis for model construction.</td>
+      <td>逐个上传figure，并在Caption / Legend: 填写对应figure的描述</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>NaN</td>
+      <td>Image</td>
+      <td>Figure 3. Validation of the prognostic AngRG signature in the TCGA-LIHC and ICGC-LIRI-JP cohorts. (A, B) The ROC curves predict 1-, 3- and 5-year overall survival (OS) events in the two cohorts. (C, D) Kaplan-Meier plots of the two cohorts. (E) The distributions of risk scores and survival status of the TCGA-LIHC cohort.</td>
+      <td>逐个上传figure，并在Caption / Legend: 填写对应figure的描述</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>NaN</td>
+      <td>Image</td>
+      <td>Figure 4. Construction of a prognostic nomogram for OS prediction in the TCGA-LIHC cohorts and validation. (A) Univariate and (B) multivariate Cox regression analyses of clinical factors. (C) A nomogram constructed using cancer status and risk score for predicting the 1-, 3-, and 5-year OS of HCC patients. (D) ROC curve analysis for nomogram performance evaluation. (E) Calibration curves of the nomogram showing the correlation between the actual and predicted OS outcomes. (F-H) Decision curve analysis of the gene model and clinical model in the TCGA-LIHC cohorts.</td>
+      <td>逐个上传figure，并在Caption / Legend: 填写对应figure的描述</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>NaN</td>
+      <td>Image</td>
+      <td>Figure 5. Somatic mutation analysis in the AngRG high-risk group (A) and AngRG low-risk group (B) of the TCGA-LIHC cohort.</td>
+      <td>逐个上传figure，并在Caption / Legend: 填写对应figure的描述</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>NaN</td>
+      <td>Image</td>
+      <td>Figure 6. Functional enrichment analysis (A) and immune microenvironment analysis (B) in the AngRG high- and low-risk groups of the TCGA-LIHC cohort.</td>
+      <td>逐个上传figure，并在Caption / Legend: 填写对应figure的描述</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>NaN</td>
+      <td>Supplementary Material for Review</td>
+      <td>Supplementary Table 1. Differentially expressed angiogenesis-related genes between the primary and metastasis HCC.xlsx</td>
+      <td>逐个上传Supplementary Table</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>NaN</td>
+      <td>Supplementary Material for Review</td>
+      <td>Supplementary Table 2. Univariate Cox regression analysis results.xlsx</td>
+      <td>逐个上传Supplementary Table</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>NaN</td>
+      <td>Supplementary Material for Review</td>
+      <td>Supplementary Table 3. Multivariate Cox regression analysis results.xlsx</td>
+      <td>逐个上传Supplementary Table</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>NaN</td>
+      <td>Supplementary Material for Review</td>
+      <td>Supplementary Table 4. The risk score (RS) of each patient.xlsx</td>
+      <td>逐个上传Supplementary Table</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>NaN</td>
+      <td>Supplementary Material for Review</td>
+      <td>Supplementary Table 5. GSEA results.xlsx</td>
+      <td>逐个上传Supplementary Table</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>NaN</td>
+      <td>Supplementary Material for Review</td>
+      <td>Supplementary Table 6. XCELL results.xlsx</td>
+      <td>逐个上传Supplementary Table</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>NaN</td>
+      <td>Save &amp; Continue</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Step 3: Attributes</td>
+      <td>Key Words</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>NaN</td>
+      <td>Hepatocellular carcinoma</td>
+      <td>输入关键词，点击Add</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>NaN</td>
+      <td>scRNA-seq</td>
+      <td>输入关键词，点击Add</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>NaN</td>
+      <td>angiogenesis</td>
+      <td>输入关键词，点击Add</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>NaN</td>
+      <td>prediction model</td>
+      <td>输入关键词，点击Add</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>NaN</td>
+      <td>immune microenvironment</td>
+      <td>输入关键词，点击Add</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>NaN</td>
+      <td>Save &amp; Continue</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Step 4: Authors &amp; Institutions</td>
+      <td>Mou, Lisha</td>
+      <td>NaN</td>
+      <td>需要绑定ORCID</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>NaN</td>
+      <td>Add Author</td>
+      <td>NaN</td>
+      <td>先输入邮箱，如果系统中没有，需要点击create a new co-author录入作者信息</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>NaN</td>
+      <td>h7kan@uwaterloo.ca</td>
+      <td>输入邮箱，点击Search</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>NaN</td>
+      <td>No co-author found. Please search again using another e-mail address or create a new co-author</td>
+      <td>点击create a new co-author</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>NaN</td>
+      <td>* Prefix:</td>
+      <td>Mr.</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>NaN</td>
+      <td>* First (Given) Name:</td>
+      <td>Hayden</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>NaN</td>
+      <td>* Last (Family) Name:</td>
+      <td>Kan</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>NaN</td>
+      <td>Institution 1</td>
+      <td>点击Quick Fill，点击弹窗的内容：Shenzhen Second People's Hospital\nShenzhen, CN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>NaN</td>
+      <td>Add Created Author</td>
+      <td>点击</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>NaN</td>
+      <td>sharisharayh@gmail.com</td>
+      <td>输入邮箱，点击Search</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>NaN</td>
+      <td>No co-author found. Please search again using another e-mail address or create a new co-author</td>
+      <td>点击create a new co-author</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>NaN</td>
+      <td>* Prefix:</td>
+      <td>Mr.</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>NaN</td>
+      <td>* First (Given) Name:</td>
+      <td>Mohammad</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>NaN</td>
+      <td>* Last (Family) Name:</td>
+      <td>Shaharyar</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>NaN</td>
+      <td>Institution 1</td>
+      <td>点击Quick Fill，点击弹窗的内容：Shenzhen Second People's Hospital\nShenzhen, CN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>NaN</td>
+      <td>Add Created Author</td>
+      <td>点击</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>NaN</td>
+      <td>rnquan8@gmail.com</td>
+      <td>输入邮箱，点击Search</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>NaN</td>
+      <td>No co-author found. Please search again using another e-mail address or create a new co-author</td>
+      <td>点击create a new co-author</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>NaN</td>
+      <td>* Prefix:</td>
+      <td>Mr.</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>NaN</td>
+      <td>* First (Given) Name:</td>
+      <td>Ryan</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>NaN</td>
+      <td>* Last (Family) Name:</td>
+      <td>Quan</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>NaN</td>
+      <td>Institution 1</td>
+      <td>点击Quick Fill，点击弹窗的内容：Shenzhen Second People's Hospital\nShenzhen, CN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>NaN</td>
+      <td>Add Created Author</td>
+      <td>点击</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>NaN</td>
+      <td>y2so@uwaterloo.ca</td>
+      <td>输入邮箱，点击Search</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>NaN</td>
+      <td>No co-author found. Please search again using another e-mail address or create a new co-author</td>
+      <td>点击create a new co-author</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>NaN</td>
+      <td>* Prefix:</td>
+      <td>Mr.</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>NaN</td>
+      <td>* First (Given) Name:</td>
+      <td>Yunhu</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>NaN</td>
+      <td>* Last (Family) Name:</td>
+      <td>So</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>NaN</td>
+      <td>Institution 1</td>
+      <td>点击Quick Fill，点击弹窗的内容：Shenzhen Second People's Hospital\nShenzhen, CN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>NaN</td>
+      <td>Add Created Author</td>
+      <td>点击</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>NaN</td>
+      <td>pupeter190@163.com</td>
+      <td>输入邮箱，点击Search</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>NaN</td>
+      <td>No co-author found. Please search again using another e-mail address or create a new co-author</td>
+      <td>点击create a new co-author</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>NaN</td>
+      <td>* Prefix:</td>
+      <td>Mr.</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>NaN</td>
+      <td>* First (Given) Name:</td>
+      <td>Zuhui</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>NaN</td>
+      <td>* Last (Family) Name:</td>
+      <td>Pu</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>NaN</td>
+      <td>Institution 1</td>
+      <td>点击Quick Fill，点击弹窗的内容：Shenzhen Second People's Hospital\nShenzhen, CN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>NaN</td>
+      <td>Add Created Author</td>
+      <td>点击</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>NaN</td>
+      <td>I confirm that the contributions each author has made to the manuscript are specified in the Author Contribution Section. Authors must include the following text at the end of their statement: ‘The work reported in the paper has been performed by the authors, unless clearly specified in the text.’ Refer to the journal’s Author Guidelines for further details on this step.</td>
+      <td>点击确认V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>NaN</td>
+      <td>Save &amp; Continue</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>Step 5: Reviewers</td>
+      <td>Save &amp; Continue</td>
+      <td>NaN</td>
+      <td>可以不用填写，直接save &amp; continue</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>Step 6: Details &amp; Comments</td>
+      <td>Cover Letter</td>
+      <td>July-21-2021\nDear editor,\n\nEnclosed please find a manuscript entitled “Development and Validation of an Angiogenesis-Related Gene Signature in Hepatocellular Carcinoma” by Mou et al. We would like to submit it for consideration of publication as an “Article” in The International Journal of Cancer.\n\nApproximately 70–85 % of primary liver cancers are hepatocellular carcinoma (HCC). By using single-cell RNA sequencing (scRNA-seq), tumor cells can be characterized at single-cell resolution. Angiogenesis plays a significant role in tumor formation. There is an urgent need for an angiogenesis-related gene prediction signature to evaluate the prognosis of HCC patients. In this study, 179 angiogenesis-related genes (AngRG) were differentially expressed between primary and metastatic HCC. Transcriptome and clinical data were further gathered on HCC from TCGA and ICGC. A ten AngRG signature and risk score model was constructed to predict the outcome of HCC. A competing-risk nomogram was created using the cancer status, which was accurate and predictive. We also compared two risk score groups for somatic tumor mutational burden (TMB). The results showed that AngRG high-risk scores were linked to the TP53 mutation. According to the xCell analysis, the risk profile predicted immune cell infiltration in HCC. Additionally, enrichment of N-glycan biosynthesis, ubiquitin-mediated proteolysis, RNA degradation, the mTOR, and the cell cycle signaling pathways was identified in the AngRG high-risk group of HCC. Overall, scRNA-seq and bulk RNA-seq were used to develop a 10-gene signature (including CYP27A1, S100A10, S100A9, SQSTM1, FGB, CLDN6, CNN3, HMGCS2, CYP3A5, and RGCC) to predict the overall survival of HCC patients.\n\nWe hereby confirm that neither the manuscript nor any part of it has been published or is being considered for publication elsewhere. These are no financial or other relationships, which might lead to a conflict of interest.\nThank you very much for your consideration.\n\nYours Sincerely,\n\nLisha Mou, PhD\nE-mail: lishamou@gmail.com\nInstitute of Translational Medicine, First Affiliated Hospital of Shenzhen University, Shenzhen Second People's Hospital, Shenzhen, Guangdong, China</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>NaN</td>
+      <td>Funding</td>
+      <td>点击Add funder 填写</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>NaN</td>
+      <td>Name</td>
+      <td>Shenzhen High-level Hospital Construction Fund</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>NaN</td>
+      <td>Grant / Award Number</td>
+      <td>2019</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>NaN</td>
+      <td>Submission Information - Confirm the following:</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>NaN</td>
+      <td>I have prepared my paper and files in accordance with the journal's style and format requirements and am aware of the policies outlined in the Author Guidelines.</td>
+      <td>V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>NaN</td>
+      <td>I confirm that I have included in the manuscript a statement about ethical approval of the study and, if required, informed consent.</td>
+      <td>Not applicable</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>NaN</td>
+      <td>I confirm that this clinical trial has been prospectively registered in a public trial registry, and I have included in the manuscript the name of the registry and the registration number.</td>
+      <td>Not applicable</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>NaN</td>
+      <td>I confirm that my article contains a "Data Availability" statement (Reviews are exempt).</td>
+      <td>V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>NaN</td>
+      <td>Please cut and paste your "Data Availability" statement here (for Reviews, which are exempt, enter "not applicable")</td>
+      <td>The original contributions presented in the study are included in the article/Supplementary Material. Further inquiries can be directed to the corresponding authors.</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>NaN</td>
+      <td>I confirm that I have included a citation (e.g., accession code, URL) for available data in the manuscript (Reviews are exempt)</td>
+      <td>V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>NaN</td>
+      <td>I confirm that the sequencing coverage and quality statistics of the (epi)genomic next generation sequencing generated in this study are summarized in a supplementary table according to the IJC guidelines.</td>
+      <td>Not applicable</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>NaN</td>
+      <td>The authenticity of any human cell lines used in this study has been proven by DNA profiling within the last three years and the required documentation has been provided as per our policy.</td>
+      <td>No cell lines used</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>NaN</td>
+      <td>In the Material and Methods section of the main manuscript a statement confirming that all human cell lines have been authenticated using STR (or SNP) profiling within the last three years has been included. All cell lines used are listed using the official cell line name and its Research Resource Identifier (RRID) as available in the ExPASy Cellosaurus database (e.g., HeLa (RRID:CVCL_0030)). In addition, the source/suppliers of all cell lines used has/have been provided.</td>
+      <td>No cell lines used</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>NaN</td>
+      <td>All experiments were performed with mycoplasma-free cells and a statement confirming this was included in the Material and Methods section of the main manuscript.</td>
+      <td>Not applicable</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>NaN</td>
+      <td>Publication Policies - Marking a checkbox registers as an affirmative response.</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>NaN</td>
+      <td>I confirm that all authors of this submission have understood the journal's licensing policy. Further information about the journal's license agreement(s) and Terms of Use can be found in the journal's Author Guidelines</td>
+      <td>V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>NaN</td>
+      <td>I have read and understood the journal's policy concerning color charges.</td>
+      <td>V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>NaN</td>
+      <td>I have read the journal’s policy concerning page charges. I understand that a fee of US$150.00 for each page beyond the first 8 will be charged.</td>
+      <td>V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>NaN</td>
+      <td>Declarations</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>NaN</td>
+      <td>I confirm that the manuscript has been submitted solely to this journal and is not published, in press, or submitted elsewhere.</td>
+      <td>V</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>NaN</td>
+      <td>In case an earlier version of this manuscript has been posted on a non-commercial preprint server prior to submission, I have provided in the manuscript the DOI of the preprint and a link to the article.</td>
+      <td>Not applicable</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>NaN</td>
+      <td>The submitting or corresponding author confirms that all authors agree to the submission of this manuscript to the International Journal of Cancer and affirm knowledge and agreement with its content and presentation. All authors also agree with the authorship as listed on the title page of the manuscript.</td>
+      <td>Yes</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>NaN</td>
+      <td>Does any author have a conflict of interest associated with this paper? Please make sure that you include at the end of the main text, preceding the references, a statement of a possible conflict of interest. If no conflict exists please add a statement to that effect at the end of the manuscript text.</td>
+      <td>No</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>NaN</td>
+      <td>Was outside assistance procured for the WRITING of this manuscript (not permitted for Reviews or Editorials)?</td>
+      <td>No</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>NaN</td>
+      <td>Was outside assistance procured for the EDITING of this manuscript?</td>
+      <td>No</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>NaN</td>
+      <td>Save &amp; Continue</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>Step 7: Review &amp; Submit</td>
+      <td>View Proof</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>NaN</td>
+      <td>View HTML Proof</td>
+      <td>点击</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>NaN</td>
+      <td>View PDF Proof</td>
+      <td>点击</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>NaN</td>
+      <td>View MedLine Proof</td>
+      <td>点击</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>到此完成所有步骤</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
 {% endblock %}

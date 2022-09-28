@@ -25,10 +25,4 @@
   <div id="message">Database empty</div>
   {% endif %}
 
-  {% if result %}
-  <div>
-      <h4>{{ filename }}</h4>
-      <iframe src="{{ url_for('test') }}" id="table" title="Data Table">IFrame not supported</iframe>
-  </div>
-  {% endif %}
 {% endblock %}
